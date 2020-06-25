@@ -1,6 +1,7 @@
 import React from 'react';
 import './list.scss';
 import Masonry from 'react-masonry-css'
+import Carousel from 'nuka-carousel';
 
 const items = [{
     name: "ma1",
@@ -45,16 +46,26 @@ const Items = items.map((item, index) => {
     for (var i = 1; i <= item.img; i++) {
         try {
             const url = require(`../images/${item.name}-${i}.JPG`)
-            images.push(<img src={url} className="img"></img>)
+            images.push(<img key={i} src={url} className="img"></img>)
         }
         catch (e) {
+            images.push(<img key={i} className="img"></img>)
             console.log(e);
         }
     }
 
     return (
         <div className="item" key={index}>
-            {images}
+            <Carousel
+                renderCenterLeftControls={({ previousSlide }) => (
+                    <button onClick={previousSlide}>{'<'}</button>
+                )}
+                renderCenterRightControls={({ nextSlide }) => (
+                    <button onClick={nextSlide}>{'>'}</button>
+                )}
+            >
+                {images}
+            </Carousel>
             <p className="name">{item.name}</p>
             <p className="price">¥ {item.price}</p>
         </div>
