@@ -10,8 +10,8 @@
     .img {
       min-width: 150px;
       min-height: 200px;
-      width: auto;
-      height: 100%;
+      width: 100%;
+      height: auto;
       margin: auto;
       background-color: $color-shadow;
     }
@@ -35,4 +35,27 @@
 .my-masonry-grid_column {
   padding-left: 30px; /* gutter size */
   background-clip: padding-box;
+}
+
+.slider-control-centerright,
+.slider-control-centerleft {
+  height: 100%;
+
+  button {
+    height: 100%;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    color: transparent;
+    transition: all ease 0.3s;
+
+    &:hover {
+      background-color: #00000030;
+      transition: all ease 0.3s;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
