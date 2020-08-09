@@ -58,10 +58,10 @@ const Items = items.map((item, index) => {
         <div className="item" key={index}>
             <Carousel
                 renderCenterLeftControls={({ previousSlide }) => (
-                    <button onClick={previousSlide}>{'<'}</button>
+                    <button onClick={previousSlide}>{''}</button>
                 )}
                 renderCenterRightControls={({ nextSlide }) => (
-                    <button onClick={nextSlide}>{'>'}</button>
+                    <button onClick={nextSlide}>{''}</button>
                 )}
             >
                 {images}
@@ -73,10 +73,16 @@ const Items = items.map((item, index) => {
 })
 
 const List = () => {
+    const breakpointColumnsObj = {
+        default: 3,
+        1100: 3,
+        700: 2,
+        500: 1
+    };
 
     return (
         <Masonry
-            breakpointCols={3}
+            breakpointCols={breakpointColumnsObj}
             className="list my-masonry-grid"
             columnClassName="my-masonry-grid_column">
             {Items}
